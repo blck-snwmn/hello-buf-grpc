@@ -8,6 +8,14 @@ protoc --go_out=./gen/grpc --go_opt=paths=source_relative --go-grpc_out=./gen/gr
 
 ## Use Buf
 
+### Generate
+
 ```bash
 buf generate
+```
+
+### Check breaking chage
+
+```
+buf breaking --against '.git#branch=main'
 ```
