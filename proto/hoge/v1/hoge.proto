@@ -1,16 +1,16 @@
 syntax = "proto3";
 
-option go_package = "gen/grpc/greet";
+option go_package = "gen/grpc/hoge";
 
-package proto.greet.v1;
+package proto.hoge.v1;
 
-service GreeterService {
+service HogeService {
 	rpc Hello (HelloRequest) returns (HelloResponse); 
 }
 
 message HelloRequest {
 	string name = 1;
-	string option = 3;
+	string option = 2;
 }
 
 message HelloResponse {
