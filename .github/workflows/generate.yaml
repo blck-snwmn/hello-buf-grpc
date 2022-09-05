@@ -16,6 +16,20 @@ jobs:
       - name: Generate
         run: |
           buf generate
+      - name: Check diff
+        id: diff
+        run: |
+          git add -N .
+          git diff --exit-code --quiet
+        continue-on-error: true
       - name: Test
         run: |
           echo ${{ github.head_ref }}
+      - name: Commit & Push
+        if: steps.diff.outcome == 'failure' # diff がある場合のみ実行する
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m '[ci skip] Generate gRPC code'
+          git push origin ${{ github.head_ref }}
