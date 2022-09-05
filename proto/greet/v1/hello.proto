@@ -10,7 +10,7 @@ service GreeterService {
 
 message HelloRequest {
 	string name = 1;
-	string option = 2;
+	string option = 3;
 }
 
 message HelloResponse {
