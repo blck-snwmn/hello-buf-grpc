@@ -1,5 +1,8 @@
 name: buf-pull-request
-on: pull_request
+on: 
+  pull_request:
+    paths:
+      - '**.proto'
 jobs:
   build:
     runs-on: ubuntu-latest
